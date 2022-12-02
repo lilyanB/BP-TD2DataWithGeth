@@ -1,0 +1,23 @@
+{
+  "name": "bp-td2datawithgeth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Geth.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lilyanB/BP-TD2DataWithGeth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lilyanB/BP-TD2DataWithGeth/issues"
+  },
+  "homepage": "https://github.com/lilyanB/BP-TD2DataWithGeth#readme",
+  "dependencies": {
+    "ethers": "^5.7.2",
+    "web3": "^1.8.1"
+  }
+}
