@@ -7,6 +7,8 @@ node Geth.js
 Q1 : Get the Eth balance of an account (1 pts)
 aller sur l'IPC pour avoir tous les module
 Q2 : Get a list of the IPs of all the nodes your node is connected to (2 pts)
+admin.peers
+admin.peers.forEach(function(value){console.log(value.network.remoteAddress+"\t"+value.name)})
 Q3 : Add another node of the class as a peer (2pts)
 Q4 : Get a list of all the transactions in block 8017276 (2 pts)
 Q5 : Get a list of all the transactions in your mempool (2 pts)
