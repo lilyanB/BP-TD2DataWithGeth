@@ -96,6 +96,23 @@ const main = async () => {
 
 
   console.log("QUESTION 8 :")
+  const startBlock2 = 8143550
+  const finishBllock2 = 8143553
+  let arrayfrom2 = []
+  for (let j = startBlock2; j < finishBllock2+1; j++) {
+    const numberofTxInOneBlock = await web3.eth.getBlockTransactionCount(j)
+    for (let i = 0; i < numberofTxInOneBlock; i++) {
+      let transactionBlock = await web3.eth.getTransactionFromBlock(j, i)
+      if (transactionBlock.hash !== null) {
+        if (transactionBlock.to == AaveContract) {
+          if (true) {
+            arrayfrom2.push(transactionBlock.hash)
+          }
+        }
+      }
+    }
+  }
+  console.log(`List tx interact with aave contract : ${JSON.stringify(arrayfrom2)}`);
 
   console.log("QUESTION 9 :")
 
