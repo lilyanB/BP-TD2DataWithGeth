@@ -105,8 +105,8 @@ const main = async () => {
       let transactionBlock = await web3.eth.getTransactionFromBlock(j, i)
       if (transactionBlock.hash !== null) {
         if (transactionBlock.to == AaveContract) {
-          if (true) {
-            arrayfrom2.push(transactionBlock.hash)
+          if (transactionBlock.input.includes("a2025b15a1757311bfd68cb14eaefcc237af5b43")) {
+            arrayfrom2.push(transactionBlock)
           }
         }
       }
