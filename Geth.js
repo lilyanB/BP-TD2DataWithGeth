@@ -45,14 +45,14 @@ const main = async () => {
   const numberPeer = await web3.eth.net.getPeerCount()
   console.log("Number of peer was connected : ", numberPeer)
 
-  
+
   console.log("QUESTION 3 :")
 
   console.log("QUESTION 4 :")
   const numberofTx = await web3.eth.getBlockTransactionCount(blockNumber)
   let arrayTX = []
   for (let i = 0; i < numberofTx; i++) {
-    let transactionBlock = await web3.eth.getTransactionFromBlock(blockNumber,2)
+    let transactionBlock = await web3.eth.getTransactionFromBlock(blockNumber, i)
     arrayTX[i] = transactionBlock.hash
   }
   console.log(`Number of TX in block ${blockNumber} : ${numberofTx}`);
@@ -62,17 +62,38 @@ const main = async () => {
   const numberofTxMempool = await web3.eth.getBlockTransactionCount("pending")
   let arrayTXmempool = []
   for (let i = 0; i < numberofTxMempool; i++) {
-    let transactionBlock = await web3.eth.getTransactionFromBlock(blockNumber,2)
-    arrayTXmempool[i] = transactionBlock.hash
+    let transactionBlock = await web3.eth.getTransactionFromBlock("pending", i)
+    if (transactionBlock.hash  !== null) {
+      arrayTXmempool[i] = transactionBlock.hash
+    }
   }
-  console.log(`Number of TX in block ${blockNumber} : ${numberofTxMempool}`);
+  console.log(`Number of TX in mempool : ${numberofTxMempool}`);
   console.log(`List of tx in mempool : ${arrayTXmempool}`);
 
   console.log("QUESTION 6 : ")
   const result = await provider.getTransactionReceipt(tx)
   console.log(`info of ${tx} is: ${JSON.stringify(result)}`)
 
+
   console.log("QUESTION 7 :")
+  const startBlock = 8144200
+  const finishBllock = 8144204
+  let arrayfrom = []
+  for (let j = startBlock; j < finishBllock+1; j++) {
+    const numberofTxInOneBlock = await web3.eth.getBlockTransactionCount(j)
+    for (let i = 0; i < numberofTxInOneBlock; i++) {
+      let transactionBlock = await web3.eth.getTransactionFromBlock(j, i)
+      if (transactionBlock.hash !== null) {
+        if (transactionBlock.to == AaveContract) {
+          arrayfrom.push(transactionBlock.hash)
+        }
+      }
+    }
+  }
+  console.log(`List tx interact with aave contract : ${arrayfrom}`);
+
+
+
 
   console.log("QUESTION 8 :")
 
